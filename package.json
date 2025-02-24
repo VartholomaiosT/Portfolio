@@ -6,9 +6,9 @@
   "homepage": "https://vartholomaiost.github.io/Portfolio/",
   "scripts": {
     "dev": "cross-env EXPO_NO_TELEMETRY=1 expo start",
-    "build:web": "expo export --platform web",
     "lint": "expo lint",
-    "predeploy": "expo export",
+    "build:web": "expo export --platform web",
+    "predeploy": "expo export --platform web",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
