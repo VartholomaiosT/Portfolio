@@ -3,7 +3,7 @@
 🚀 Welcome to my portfolio! This project showcases my skills, experience, and projects. It's built with React and Expo for a seamless web and mobile experience.
 
 🔗 Live Demo  
-👉 [View Portfolio](https://github.com/VartholomaiosT/Vartholomaios.github.io)
+👉 [View Portfolio](https://vartholomaiost.github.io/Portfolio/)
 
 🛠️ Tech Stack  
 Frontend: React, Expo, JavaScript/TypeScript  
