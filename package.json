@@ -3,12 +3,13 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://vartholomaiost.github.io/Portfolio/",
   "scripts": {
     "dev": "cross-env EXPO_NO_TELEMETRY=1 expo start",
     "lint": "expo lint",
     "build:web": "expo export --platform web",
-    "deploy": "gh-pages -d web-build",
-    "predeploy": "npm run build:web"
+    "predeploy": "expo export --platform web",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",

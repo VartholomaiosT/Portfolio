@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "bolt-expo-nativewind",
-    "slug": "bolt-expo-nativewind",
+    "name": "Vartholomaios Portfolio",
+    "slug": "Vartholomaios Portfolio",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
@@ -18,8 +18,7 @@
     },
     "plugins": ["expo-router"],
     "experiments": {
-      "typedRoutes": true,
-      "baseUrl": "/expo-gh-pages"
+      "typedRoutes": true
     },
     "homepage": "."
   }
