@@ -8,8 +8,8 @@
 🛠️ Tech Stack  
 Frontend: React, Expo, JavaScript/TypeScript  
 Styling: Tailwind CSS / Styled Components  
-State Management: React Context / Redux (if used)  
-Deployment: Vercel / Netlify (mention if deployed)   
+State Management: React Context  
+Deployment: GitHub Pages
 
 🚀 Features  
 ✅ Responsive design (works on mobile & desktop)  
@@ -21,8 +21,8 @@ Deployment: Vercel / Netlify (mention if deployed)
 
 ```sh
 # Clone the repository
-git clone https://github.com/VartholomaiosT/Vartholomaios.github.io
-cd my-portfolio
+git clone https://github.com/VartholomaiosT/Portfolio.git
+cd Portfolio
 
 # Install dependencies
 npm install
