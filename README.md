@@ -1,4 +1,5 @@
-📌 My Portfolio
+📌 Vartholomaios Portfolio
+
 🚀 Welcome to my portfolio! This project showcases my skills, experience, and projects. It's built with React and Expo for a seamless web and mobile experience.
 
 🔗 Live Demo
@@ -22,12 +23,12 @@ Deployment: Vercel / Netlify (mention if deployed)
 
 ```sh
 # Clone the repository
-git clone https://github.com/your-username/my-portfolio.git
+git clone https://github.com/VartholomaiosT/Vartholomaios.github.io
 cd my-portfolio
 
 # Install dependencies
 npm install
 
 # Run the project
-npm start
+npx expo start  
 ```
