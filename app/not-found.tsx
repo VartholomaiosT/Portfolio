@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Platform, Pressable } from "react-native";
+import { View, StyleSheet, Platform, Pressable, Text } from "react-native";
 import { useRouter } from "expo-router";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { LinearGradient } from "expo-linear-gradient";
@@ -49,10 +49,6 @@ const styles = StyleSheet.create({
         cursor: "pointer",
         transition: "all 0.2s ease-in-out",
         backdropFilter: "blur(10px)",
-        ":hover": {
-          transform: "translateY(-2px)",
-          backgroundColor: "rgba(255,255,255,0.15)",
-        },
       },
     }),
   },
@@ -91,9 +87,7 @@ export default function NotFound() {
             onPress={() => router.replace("/homepage")}
           >
             <FontAwesome name="home" size={20} color="#ffffff" />
-            <Animated.Text style={styles.buttonText}>
-              Return to Homepage
-            </Animated.Text>
+            <Text style={styles.buttonText}>Return to Homepage</Text>
           </Pressable>
         </Animated.View>
       </LinearGradient>

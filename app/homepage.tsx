@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, StyleSheet, Platform, ScrollView } from "react-native";
+import { View, StyleSheet, Platform, ScrollView, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import Animated, { FadeIn } from "react-native-reanimated";
+import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
 
 import Header from "./components/Header";
 import ProfileImage from "./components/ProfileImage";
@@ -20,14 +20,7 @@ import {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    ...Platform.select({
-      web: {
-        display: "flex",
-      },
-      default: {
-        backgroundColor: "#1a1a1a",
-      },
-    }),
+    backgroundColor: "#1a1a1a", // Apply the same background color for all platforms
   },
   gradient: {
     flex: 1,
@@ -37,7 +30,7 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
-    paddingTop: Platform.select({ web: 90, default: 20 }),
+    paddingTop: 90, // Apply the same padding for all platforms
     minHeight: "100%",
     alignItems: "center",
   },
@@ -49,7 +42,7 @@ const styles = StyleSheet.create({
   hero: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: Platform.select({ web: 60, default: 20 }),
+    marginTop: 60, // Apply the same margin for all platforms
     marginBottom: 80,
   },
 });
@@ -71,7 +64,9 @@ export default function Homepage() {
       const element = document.getElementById(sectionId);
       if (element) {
         const yOffset = -80;
-        element.scrollIntoView({ behavior: "smooth" });
+        const y =
+          element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
     } else if (scrollViewRef.current && sectionRefs[sectionId] !== undefined) {
       scrollViewRef.current.scrollTo({
@@ -84,6 +79,7 @@ export default function Homepage() {
   return (
     <View style={styles.container}>
       <Header scrollToSection={scrollToSection} />
+      <Animated.View entering={FadeIn.duration(500)}></Animated.View>
       <LinearGradient
         colors={["#1a1a1a", "#2d2d2d", "#3d3d3d"]}
         style={styles.gradient}
@@ -93,41 +89,52 @@ export default function Homepage() {
           style={styles.scrollView}
           contentContainerStyle={styles.content}
         >
-          <View style={styles.section}>
-            <Animated.View entering={FadeIn.delay(300)} style={styles.hero}>
-              <ProfileImage imageUrl={PROFILE_DATA.imageUrl} />
-              <Bio
-                name={PROFILE_DATA.name}
-                title={PROFILE_DATA.title}
-                description={PROFILE_DATA.description}
-              />
-              <SocialLinks links={SOCIAL_LINKS} />
-            </Animated.View>
-          </View>
+          <Animated.View entering={FadeIn.delay(300)} style={styles.section}>
+            <View style={styles.hero}>
+              <Animated.View entering={FadeInDown.delay(500)}>
+                <ProfileImage imageUrl={PROFILE_DATA.imageUrl} />
+              </Animated.View>
 
-          <View
-            style={[styles.section, { marginTop: 40 }]}
+              <Animated.View entering={FadeInDown.delay(700)}>
+                <Bio
+                  name={PROFILE_DATA.name}
+                  title={PROFILE_DATA.title}
+                  description={PROFILE_DATA.description}
+                />
+              </Animated.View>
+
+              <Animated.View entering={FadeInDown.delay(900)}>
+                <SocialLinks links={SOCIAL_LINKS} />
+              </Animated.View>
+            </View>
+          </Animated.View>
+
+          <Animated.View
+            entering={FadeInDown.delay(1100)}
+            style={styles.section}
             nativeID="projects"
             onLayout={handleLayout("projects")}
           >
             <Projects projects={PROJECTS} />
-          </View>
+          </Animated.View>
 
-          <View
-            style={[styles.section, { marginTop: 40 }]}
+          <Animated.View
+            entering={FadeInDown.delay(1300)}
+            style={styles.section}
             nativeID="skills"
             onLayout={handleLayout("skills")}
           >
             <Skills skills={SKILLS} />
-          </View>
+          </Animated.View>
 
-          <View
-            style={[styles.section, { marginTop: 40 }]}
+          <Animated.View
+            entering={FadeInDown.delay(1500)}
+            style={styles.section}
             nativeID="experience"
             onLayout={handleLayout("experience")}
           >
             <Experience />
-          </View>
+          </Animated.View>
         </ScrollView>
       </LinearGradient>
     </View>

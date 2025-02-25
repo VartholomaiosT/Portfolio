@@ -10,7 +10,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
-    "typeRoots": ["./app/types", "./node_modules/@types"]
+    "types": ["react-native", "node"]
   },
   "include": [
     "**/*.ts",

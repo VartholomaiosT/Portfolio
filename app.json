@@ -18,8 +18,8 @@
     },
     "plugins": ["expo-router"],
     "experiments": {
-      "typedRoutes": true
-    },
-    "homepage": "."
+      "typedRoutes": true,
+      "baseUrl": "/Portfolio/"
+    }
   }
 }
