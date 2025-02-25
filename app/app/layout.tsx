@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import {
   ScrollView,
   StyleSheet,
@@ -13,7 +13,7 @@ import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import { PROJECTS, SKILLS } from "../utils/constants";
-
+import { loadFonts } from "../fonts";
 interface SectionRef {
   [key: string]: number;
 }
@@ -47,6 +47,7 @@ export default function Layout() {
   const scrollViewRef = useRef<ScrollView>(null);
   const [sectionRefs, setSectionRefs] = useState<SectionRef>({});
   const { height: windowHeight } = Dimensions.get("window");
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const handleLayout = useCallback(
     (sectionId: string) => (event: LayoutChangeEvent) => {
@@ -72,6 +73,23 @@ export default function Layout() {
     [sectionRefs]
   );
 
+  useEffect(() => {
+    async function prepare() {
+      try {
+        await loadFonts();
+
+        setFontsLoaded(true);
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+
+    prepare();
+  }, []);
+
+  if (!fontsLoaded) {
+    return null; // Or a loading component
+  }
   return (
     <View style={styles.container}>
       <StatusBar

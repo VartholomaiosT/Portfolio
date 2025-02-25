@@ -64,59 +64,6 @@ export default function MainScreen() {
       <Animated.View entering={FadeIn.duration(800)}>
         <Header scrollToSection={scrollToSection} />
       </Animated.View>
-      <LinearGradient
-        colors={["#1a1a1a", "#2d2d2d", "#3d3d3d"]}
-        style={styles.gradient}
-      >
-        <ScrollView
-          ref={scrollViewRef}
-          style={{ flex: 1 }}
-          contentContainerStyle={styles.content}
-          showsVerticalScrollIndicator={false}
-        >
-          <Animated.View
-            entering={FadeInDown.duration(1000).delay(200)}
-            style={styles.section}
-          >
-            <View style={styles.hero}>
-              <ProfileImage imageUrl={PROFILE_DATA.imageUrl} delay={300} />
-              <Bio
-                name={PROFILE_DATA.name}
-                title={PROFILE_DATA.title}
-                description={PROFILE_DATA.description}
-                nameDelay={500}
-                titleDelay={700}
-                descriptionDelay={900}
-              />
-              <SocialLinks links={SOCIAL_LINKS} delay={1100} />
-            </View>
-          </Animated.View>
-
-          <Animated.View
-            entering={FadeInDown.duration(1000).delay(1300)}
-            style={styles.section}
-            nativeID="projects"
-          >
-            <Projects projects={PROJECTS} delay={1500} />
-          </Animated.View>
-
-          <Animated.View
-            entering={FadeInDown.duration(1000).delay(1700)}
-            style={styles.section}
-            nativeID="skills"
-          >
-            <Skills skills={SKILLS} delay={1900} />
-          </Animated.View>
-
-          <Animated.View
-            entering={FadeInDown.duration(1000).delay(2100)}
-            style={styles.section}
-            nativeID="experience"
-          >
-            <Experience delay={2300} />
-          </Animated.View>
-        </ScrollView>
-      </LinearGradient>
     </View>
   );
 }
