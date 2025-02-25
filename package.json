@@ -9,8 +9,7 @@
     "lint": "expo lint",
     "build:web": "expo export --platform web",
     "predeploy": "expo export --platform web",
-    "deploy": "gh-pages -d dist",
-    "copy-fonts": "mkdir -p web-build/fonts && cp node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts/FontAwesome.ttf web-build/fonts/"
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",

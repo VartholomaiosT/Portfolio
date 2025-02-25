@@ -13,7 +13,6 @@ import Projects from "../components/Projects";
 import Skills from "../components/Skills";
 import Experience from "../components/Experience";
 import { PROJECTS, SKILLS } from "../utils/constants";
-import { loadFonts } from "../fonts";
 interface SectionRef {
   [key: string]: number;
 }
@@ -72,20 +71,6 @@ export default function Layout() {
     },
     [sectionRefs]
   );
-
-  useEffect(() => {
-    async function prepare() {
-      try {
-        await loadFonts();
-
-        setFontsLoaded(true);
-      } catch (e) {
-        console.warn(e);
-      }
-    }
-
-    prepare();
-  }, []);
 
   if (!fontsLoaded) {
     return null; // Or a loading component
