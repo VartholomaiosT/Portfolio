@@ -20,6 +20,7 @@
     "experiments": {
       "typedRoutes": true,
       "baseUrl": "/Portfolio/"
-    }
+    },
+    "assetBundlePatterns": ["**/*", "assets/fonts/*"]
   }
 }
