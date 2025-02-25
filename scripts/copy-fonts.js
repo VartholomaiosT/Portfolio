@@ -5,7 +5,7 @@ const sourceDir = path.join(
   __dirname,
   "../node_modules/@expo/vector-icons/build/vendor/react-native-vector-icons/Fonts"
 );
-const targetDir = path.join(__dirname, "../assets/fonts");
+const targetDir = path.join(__dirname, "../dist/fonts");
 
 if (!fs.existsSync(targetDir)) {
   fs.mkdirSync(targetDir, { recursive: true });
