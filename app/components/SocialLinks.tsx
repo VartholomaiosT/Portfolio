@@ -1,12 +1,13 @@
 import React from "react";
 import { View, Pressable, StyleSheet, Platform, Linking } from "react-native";
-import { FontAwesome } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import Animated, { FadeInDown } from "react-native-reanimated";
+import { Icons } from "./Icons";
 
 interface SocialLink {
   name: string;
   url: string;
-  icon: keyof typeof FontAwesome.glyphMap;
+  icon: keyof typeof MaterialIcons.glyphMap;
   label: string;
 }
 
@@ -46,26 +47,33 @@ const styles = StyleSheet.create({
 });
 
 export default function SocialLinks({ links, delay = 1300 }: SocialLinksProps) {
-  const openLink = (url: string) => {
-    Linking.openURL(url).catch((err) => {
-      console.error("Error opening link:", err);
-    });
+  const getIcon = (iconName: string) => {
+    switch (iconName) {
+      case "linkedin":
+        return <Icons.linkedin size={24} />;
+      case "github":
+        return <Icons.github size={24} />;
+      case "envelope":
+        return <Icons.email size={24} />;
+      default:
+        return null;
+    }
   };
 
   return (
     <Animated.View entering={FadeInDown.delay(delay)} style={styles.container}>
-      {links.map((link, index) => (
+      {links.map((link) => (
         <AnimatedPressable
           key={link.name}
           style={({ pressed }) => [
             styles.socialButton,
             pressed && styles.socialButtonPressed,
           ]}
-          onPress={() => openLink(link.url)}
+          onPress={() => Linking.openURL(link.url)}
           accessibilityLabel={link.label}
           accessibilityRole="link"
         >
-          <FontAwesome name={link.icon} size={24} color="#fff" />
+          {getIcon(link.icon)}
         </AnimatedPressable>
       ))}
     </Animated.View>

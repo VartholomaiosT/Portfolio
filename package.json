@@ -8,9 +8,8 @@
     "dev": "cross-env EXPO_NO_TELEMETRY=1 expo start",
     "lint": "expo lint",
     "build:web": "expo export --platform web",
-    "predeploy": "npm run copy-fonts && expo export --platform web",
-    "deploy": "gh-pages -d dist",
-    "copy-fonts": "node scripts/copy-fonts.js"
+    "predeploy": " expo export --platform web",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.2",
