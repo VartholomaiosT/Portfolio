@@ -7,7 +7,7 @@ import { Icons } from "./Icons";
 interface SocialLink {
   name: string;
   url: string;
-  icon: keyof typeof MaterialIcons.glyphMap;
+  icon: "linkedin" | "github" | "envelope" | "phone";
   label: string;
 }
 
@@ -55,6 +55,8 @@ export default function SocialLinks({ links, delay = 1300 }: SocialLinksProps) {
         return <Icons.github size={24} />;
       case "envelope":
         return <Icons.email size={24} />;
+      case "phone":
+        return <Icons.phone size={24} />;
       default:
         return null;
     }

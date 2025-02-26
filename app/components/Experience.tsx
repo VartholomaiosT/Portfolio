@@ -1,7 +1,8 @@
 import React from "react";
-import { View, StyleSheet, Platform } from "react-native";
+import { View, StyleSheet, Platform, Text } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 import { FontAwesome } from "@expo/vector-icons";
+import { Icons } from "./Icons";
 
 interface ExperienceProps {
   delay?: number;
