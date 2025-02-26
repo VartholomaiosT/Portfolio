@@ -81,9 +81,13 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Skills({ skills, delay = 1700 }: SkillsProps) {
+export default function Skills({ skills, delay = 1100 }: SkillsProps) {
   return (
-    <Animated.View entering={FadeInDown.delay(delay)} style={styles.container}>
+    <Animated.View
+      entering={FadeInDown.delay(delay)}
+      style={styles.container}
+      id="skills"
+    >
       <View style={styles.section}>
         <Animated.Text style={styles.sectionTitle}>
           Programming & Frameworks

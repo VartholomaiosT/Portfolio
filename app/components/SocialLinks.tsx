@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function SocialLinks({ links, delay = 1300 }: SocialLinksProps) {
+export default function SocialLinks({ links, delay = 500 }: SocialLinksProps) {
   const getIcon = (iconName: string) => {
     switch (iconName) {
       case "linkedin":
@@ -64,19 +64,23 @@ export default function SocialLinks({ links, delay = 1300 }: SocialLinksProps) {
 
   return (
     <Animated.View entering={FadeInDown.delay(delay)} style={styles.container}>
-      {links.map((link) => (
-        <AnimatedPressable
+      {links.map((link, index) => (
+        <Animated.View
           key={link.name}
-          style={({ pressed }) => [
-            styles.socialButton,
-            pressed && styles.socialButtonPressed,
-          ]}
-          onPress={() => Linking.openURL(link.url)}
-          accessibilityLabel={link.label}
-          accessibilityRole="link"
+          entering={FadeInDown.delay(delay + index * 100)}
         >
-          {getIcon(link.icon)}
-        </AnimatedPressable>
+          <AnimatedPressable
+            style={({ pressed }) => [
+              styles.socialButton,
+              pressed && styles.socialButtonPressed,
+            ]}
+            onPress={() => Linking.openURL(link.url)}
+            accessibilityLabel={link.label}
+            accessibilityRole="link"
+          >
+            {getIcon(link.icon)}
+          </AnimatedPressable>
+        </Animated.View>
       ))}
     </Animated.View>
   );

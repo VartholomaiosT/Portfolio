@@ -6,7 +6,6 @@ import {
   Pressable,
   useWindowDimensions,
   StatusBar,
-  ScrollView,
 } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { Icons } from "./Icons";
@@ -31,7 +30,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: Platform.select({ web: 40, default: 20 }),
+    paddingHorizontal: Platform.select({ web: 40, default: 16 }),
     backgroundColor: Platform.select({
       web: "rgba(26, 26, 26, 0.85)",
       default: "rgba(26, 26, 26, 0.95)",
@@ -45,7 +44,7 @@ const styles = StyleSheet.create({
         borderBottomColor: "rgba(255, 255, 255, 0.1)",
       },
       default: {
-        height: Platform.OS === "ios" ? 44 : 56, // Standard header heights
+        height: Platform.OS === "ios" ? 60 : 70, // Adjusted height for mobile
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
@@ -59,12 +58,12 @@ const styles = StyleSheet.create({
   },
   nav: {
     flexDirection: "row",
-    gap: Platform.select({ web: 30, default: 15 }),
+    gap: Platform.select({ web: 30, default: 4 }), // Reduced gap for mobile
   },
   navItem: {
     flexDirection: "row",
     alignItems: "center",
-    gap: 8,
+    gap: 6,
     padding: 8,
     borderRadius: 8,
     ...Platform.select({
@@ -77,6 +76,9 @@ const styles = StyleSheet.create({
       },
     }),
   },
+  navItemCompact: {
+    padding: 6,
+  },
   navItemHover: Platform.select({
     web: {
       backgroundColor: "rgba(255,255,255,0.1)",
@@ -85,7 +87,7 @@ const styles = StyleSheet.create({
   }),
   navText: {
     color: "#ffffff",
-    fontSize: Platform.select({ web: 16, default: 14 }),
+    fontSize: Platform.select({ web: 16, default: 12 }), // Reduced font size for mobile
   },
   logo: {
     fontSize: 24,
@@ -103,8 +105,11 @@ interface HeaderProps {
 }
 
 export default function Header({ scrollToSection }: HeaderProps) {
-  const { height: windowHeight } = useWindowDimensions();
+  const { width } = useWindowDimensions();
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
+
+  // Determine if we should show compact view
+  const isCompact = Platform.OS !== "web" && width < 380;
 
   const handlePress = (sectionId: string) => {
     if (Platform.OS === "web") {
@@ -124,7 +129,7 @@ export default function Header({ scrollToSection }: HeaderProps) {
         <Animated.Text style={styles.logo}>VT</Animated.Text>
         <View style={styles.nav}>
           {[
-            { id: "projects", Icon: Icons.home, label: "Projects" },
+            { id: "projects", Icon: Icons.code, label: "Projects" },
             { id: "skills", Icon: Icons.wrench, label: "Skills" },
             { id: "experience", Icon: Icons.briefcase, label: "Experience" },
           ].map((item) => (
@@ -132,6 +137,7 @@ export default function Header({ scrollToSection }: HeaderProps) {
               key={item.id}
               style={({ pressed }) => [
                 styles.navItem,
+                isCompact && styles.navItemCompact,
                 hoveredItem === item.id && styles.navItemHover,
                 pressed && Platform.OS !== "web" && { opacity: 0.7 },
               ]}
@@ -143,8 +149,12 @@ export default function Header({ scrollToSection }: HeaderProps) {
                 },
               })}
             >
-              <item.Icon size={16} color="#ffffff" />
-              <Animated.Text style={styles.navText}>{item.label}</Animated.Text>
+              <item.Icon size={isCompact ? 14 : 16} color="#ffffff" />
+              {!isCompact && (
+                <Animated.Text style={styles.navText}>
+                  {item.label}
+                </Animated.Text>
+              )}
             </Pressable>
           ))}
         </View>

@@ -20,7 +20,14 @@ import {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#1a1a1a", // Apply the same background color for all platforms
+    ...Platform.select({
+      web: {
+        display: "flex",
+      },
+      default: {
+        backgroundColor: "#1a1a1a",
+      },
+    }),
   },
   gradient: {
     flex: 1,
@@ -30,7 +37,10 @@ const styles = StyleSheet.create({
   },
   content: {
     padding: 20,
-    paddingTop: 90, // Apply the same padding for all platforms
+    paddingTop: Platform.select({
+      web: 90,
+      default: Platform.OS === "ios" ? 80 : 90, // Adjusted for header height + padding
+    }),
     minHeight: "100%",
     alignItems: "center",
   },
@@ -42,7 +52,7 @@ const styles = StyleSheet.create({
   hero: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: 60, // Apply the same margin for all platforms
+    marginTop: Platform.select({ web: 60, default: 20 }),
     marginBottom: 80,
   },
 });

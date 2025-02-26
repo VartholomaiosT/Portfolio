@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
   },
 });
 
-export default function Experience({ delay = 1900 }: ExperienceProps) {
+export default function Experience({ delay = 1500 }: ExperienceProps) {
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
 
   const getTimelineItemStyle = (id: string) => {
