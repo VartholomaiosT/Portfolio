@@ -3,7 +3,7 @@ import { View, StyleSheet, Platform, Pressable, Text } from "react-native";
 import { useRouter } from "expo-router";
 import Animated, { FadeIn } from "react-native-reanimated";
 import { LinearGradient } from "expo-linear-gradient";
-import { FontAwesome } from "@expo/vector-icons";
+import { Icons } from "./components/Icons";
 
 const styles = StyleSheet.create({
   container: {
@@ -69,12 +69,7 @@ export default function NotFound() {
         style={styles.gradient}
       >
         <Animated.View entering={FadeIn.delay(300)} style={styles.content}>
-          <FontAwesome
-            name="compass"
-            size={64}
-            color="#ffffff"
-            style={styles.icon}
-          />
+          <Icons.compass size={64} color="#ffffff" style={styles.icon} />
           <Animated.Text entering={FadeIn.delay(400)} style={styles.title}>
             Page Not Found
           </Animated.Text>
@@ -86,7 +81,7 @@ export default function NotFound() {
             style={styles.button}
             onPress={() => router.replace("/homepage")}
           >
-            <FontAwesome name="home" size={20} color="#ffffff" />
+            <Icons.home size={20} color="#ffffff" />
             <Text style={styles.buttonText}>Return to Homepage</Text>
           </Pressable>
         </Animated.View>

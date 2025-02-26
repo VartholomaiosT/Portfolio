@@ -34,14 +34,14 @@ export const Icons = {
   ),
   // Add other icons as needed
   home: (props: { size?: number; color?: string }) => (
-    <svg
+    <Svg
       width={props.size || 24}
       height={props.size || 24}
       viewBox="0 0 24 24"
       fill={props.color || "#fff"}
     >
-      <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
-    </svg>
+      <Path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+    </Svg>
   ),
   work: (props: { size?: number; color?: string }) => (
     <svg
@@ -101,6 +101,69 @@ export const Icons = {
       fill={props.color || "#fff"}
     >
       <Path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+    </Svg>
+  ),
+  // For Header
+  code: (props: { size?: number; color?: string }) => (
+    <Svg
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill={props.color || "#fff"}
+    >
+      <Path d="M8.293 6.293L2.586 12l5.707 5.707 1.414-1.414L5.414 12l4.293-4.293zm7.414 11.414L21.414 12l-5.707-5.707-1.414 1.414L18.586 12l-4.293 4.293z" />
+    </Svg>
+  ),
+  wrench: (props: { size?: number; color?: string }) => (
+    <Svg
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill={props.color || "#fff"}
+    >
+      <Path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.4 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z" />
+    </Svg>
+  ),
+  briefcase: (props: { size?: number; color?: string }) => (
+    <Svg
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill={props.color || "#fff"}
+    >
+      <Path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+    </Svg>
+  ),
+  // For NotFound
+  compass: (props: { size?: number; color?: string }) => (
+    <Svg
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill={props.color || "#fff"}
+    >
+      <Path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-5.5-2.5l7.51-3.49L17.5 6.5 9.99 9.99 6.5 17.5zm5.5-6.6c.61 0 1.1.49 1.1 1.1s-.49 1.1-1.1 1.1-1.1-.49-1.1-1.1.49-1.1 1.1-1.1z" />
+    </Svg>
+  ),
+  // For Experience timeline
+  circle: (props: { size?: number; color?: string }) => (
+    <Svg
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill={props.color || "#fff"}
+    >
+      <Path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z" />
+    </Svg>
+  ),
+  check: (props: { size?: number; color?: string }) => (
+    <Svg
+      width={props.size || 24}
+      height={props.size || 24}
+      viewBox="0 0 24 24"
+      fill={props.color || "#fff"}
+    >
+      <Path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z" />
     </Svg>
   ),
 };

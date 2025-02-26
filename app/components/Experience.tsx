@@ -180,55 +180,43 @@ export default function Experience({ delay = 1900 }: ExperienceProps) {
           </View>
           <View style={styles.bulletPoints}>
             <View style={styles.bullet}>
-              <FontAwesome
-                name="check"
-                size={14}
-                color="#4A90E2"
-                style={styles.bulletIcon}
-              />
-              <Animated.Text style={styles.bulletText}>
+              <View style={styles.bulletIcon}>
+                <Icons.check size={14} color="#4A90E2" />
+              </View>
+              <Text style={styles.bulletText}>
                 Deployed and maintained mobile applications on Android and iOS
                 platforms, managing submission processes for Google Play Store
                 and Apple App Store
-              </Animated.Text>
+              </Text>
             </View>
             <View style={styles.bullet}>
-              <FontAwesome
-                name="check"
-                size={14}
-                color="#4A90E2"
-                style={styles.bulletIcon}
-              />
-              <Animated.Text style={styles.bulletText}>
+              <View style={styles.bulletIcon}>
+                <Icons.check size={14} color="#4A90E2" />
+              </View>
+              <Text style={styles.bulletText}>
                 Developed dynamic websites using Liferay, including projects for
                 government departments
-              </Animated.Text>
+              </Text>
             </View>
             <View style={styles.bullet}>
-              <FontAwesome
-                name="check"
-                size={14}
-                color="#4A90E2"
-                style={styles.bulletIcon}
-              />
-              <Animated.Text style={styles.bulletText}>
+              <View style={styles.bulletIcon}>
+                <Icons.check size={14} color="#4A90E2" />
+              </View>
+              <Text style={styles.bulletText}>
                 Designed a complex multi-tenant architecture enabling dynamic
                 location selection and seamless data integration across
                 components
-              </Animated.Text>
+              </Text>
             </View>
             <View style={styles.bullet}>
-              <FontAwesome
-                name="check"
-                size={14}
-                color="#4A90E2"
-                style={styles.bulletIcon}
-              />
-              <Animated.Text style={styles.bulletText}>
+              <View style={styles.bulletIcon}>
+                <Icons.check size={14} color="#4A90E2" />
+              </View>
+              <Text style={styles.bulletText}>
                 Developed and integrated RESTful APIs for PV ProVision
                 (Angular/Ionic) to enable dynamic data interactions and
                 real-time connectivity diagnostics
-              </Animated.Text>
+              </Text>
             </View>
           </View>
         </Animated.View>
@@ -260,28 +248,22 @@ export default function Experience({ delay = 1900 }: ExperienceProps) {
           </View>
           <View style={styles.bulletPoints}>
             <View style={styles.bullet}>
-              <FontAwesome
-                name="check"
-                size={14}
-                color="#4A90E2"
-                style={styles.bulletIcon}
-              />
-              <Animated.Text style={styles.bulletText}>
+              <View style={styles.bulletIcon}>
+                <Icons.check size={14} color="#4A90E2" />
+              </View>
+              <Text style={styles.bulletText}>
                 Refactored and redesigned existing front-end codebases using
                 HTML, CSS, Angular, and TypeScript
-              </Animated.Text>
+              </Text>
             </View>
             <View style={styles.bullet}>
-              <FontAwesome
-                name="check"
-                size={14}
-                color="#4A90E2"
-                style={styles.bulletIcon}
-              />
-              <Animated.Text style={styles.bulletText}>
+              <View style={styles.bulletIcon}>
+                <Icons.check size={14} color="#4A90E2" />
+              </View>
+              <Text style={styles.bulletText}>
                 Contributed to the development of dynamic, responsive web
                 applications, collaborating closely with senior developers
-              </Animated.Text>
+              </Text>
             </View>
           </View>
         </Animated.View>
@@ -315,16 +297,13 @@ export default function Experience({ delay = 1900 }: ExperienceProps) {
           </View>
           <View style={styles.bulletPoints}>
             <View style={styles.bullet}>
-              <FontAwesome
-                name="check"
-                size={14}
-                color="#4A90E2"
-                style={styles.bulletIcon}
-              />
-              <Animated.Text style={styles.bulletText}>
+              <View style={styles.bulletIcon}>
+                <Icons.check size={14} color="#4A90E2" />
+              </View>
+              <Text style={styles.bulletText}>
                 Managed product listings and content updates for an e-commerce
                 website, enhancing user experience
-              </Animated.Text>
+              </Text>
             </View>
           </View>
         </Animated.View>

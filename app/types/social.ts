@@ -3,7 +3,7 @@ import { FontAwesome } from "@expo/vector-icons";
 export interface SocialLink {
   name: string;
   url: string;
-  icon: keyof typeof FontAwesome.glyphMap;
+  icon: "linkedin" | "github" | "envelope" | "phone";
   label: string;
 }
 

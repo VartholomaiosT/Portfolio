@@ -9,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 import Animated, { FadeIn } from "react-native-reanimated";
-import { FontAwesome } from "@expo/vector-icons";
+import { Icons } from "./Icons";
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -124,9 +124,9 @@ export default function Header({ scrollToSection }: HeaderProps) {
         <Animated.Text style={styles.logo}>VT</Animated.Text>
         <View style={styles.nav}>
           {[
-            { id: "projects", icon: "code", label: "Projects" },
-            { id: "skills", icon: "wrench", label: "Skills" },
-            { id: "experience", icon: "briefcase", label: "Experience" },
+            { id: "projects", Icon: Icons.code, label: "Projects" },
+            { id: "skills", Icon: Icons.wrench, label: "Skills" },
+            { id: "experience", Icon: Icons.briefcase, label: "Experience" },
           ].map((item) => (
             <Pressable
               key={item.id}
@@ -143,7 +143,7 @@ export default function Header({ scrollToSection }: HeaderProps) {
                 },
               })}
             >
-              <FontAwesome name={item.icon as any} size={16} color="#ffffff" />
+              <item.Icon size={16} color="#ffffff" />
               <Animated.Text style={styles.navText}>{item.label}</Animated.Text>
             </Pressable>
           ))}
