@@ -69,7 +69,7 @@ export default function NotFound() {
         style={styles.gradient}
       >
         <Animated.View entering={FadeIn.delay(300)} style={styles.content}>
-          <Icons.compass size={64} color="#ffffff" style={styles.icon} />
+          <Icons.compass size={64} color="#ffffff" />
           <Animated.Text entering={FadeIn.delay(400)} style={styles.title}>
             Page Not Found
           </Animated.Text>

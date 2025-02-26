@@ -1,7 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Platform, Text } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
-import { FontAwesome } from "@expo/vector-icons";
 import { Icons } from "./Icons";
 
 interface ExperienceProps {
@@ -176,7 +175,7 @@ export default function Experience({ delay = 1900 }: ExperienceProps) {
                 Thessaloniki, Greece
               </Animated.Text>
             </View>
-            <FontAwesome name="building" size={20} color="#4A90E2" />
+            <Icons.code size={20} color="#4A90E2" />
           </View>
           <View style={styles.bulletPoints}>
             <View style={styles.bullet}>
@@ -244,7 +243,7 @@ export default function Experience({ delay = 1900 }: ExperienceProps) {
                 Thessaloniki, Greece
               </Animated.Text>
             </View>
-            <FontAwesome name="code" size={20} color="#4A90E2" />
+            <Icons.code size={20} color="#4A90E2" />
           </View>
           <View style={styles.bulletPoints}>
             <View style={styles.bullet}>
@@ -293,7 +292,7 @@ export default function Experience({ delay = 1900 }: ExperienceProps) {
                 Thessaloniki, Greece
               </Animated.Text>
             </View>
-            <FontAwesome name="shopping-cart" size={20} color="#4A90E2" />
+            {Icons["shopping-cart"]({ size: 20, color: "#4A90E2" })}
           </View>
           <View style={styles.bulletPoints}>
             <View style={styles.bullet}>
@@ -327,7 +326,7 @@ export default function Experience({ delay = 1900 }: ExperienceProps) {
                 Serres, Greece
               </Animated.Text>
             </View>
-            <FontAwesome name="graduation-cap" size={20} color="#6C5CE7" />
+            {Icons["graduation-cap"]({ size: 20, color: "#6C5CE7" })}
           </View>
           <Animated.Text style={styles.description}>
             Specialized in Informatics & Telecommunications

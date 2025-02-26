@@ -124,7 +124,7 @@ export default function Header({ scrollToSection }: HeaderProps) {
         <Animated.Text style={styles.logo}>VT</Animated.Text>
         <View style={styles.nav}>
           {[
-            { id: "projects", Icon: Icons.code, label: "Projects" },
+            { id: "projects", Icon: Icons.home, label: "Projects" },
             { id: "skills", Icon: Icons.wrench, label: "Skills" },
             { id: "experience", Icon: Icons.briefcase, label: "Experience" },
           ].map((item) => (
