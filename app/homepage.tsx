@@ -1,5 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
-import { View, StyleSheet, Platform, ScrollView, Text } from "react-native";
+import {
+  View,
+  StyleSheet,
+  Platform,
+  ScrollView,
+  Text,
+  SafeAreaView,
+} from "react-native"; // Added SafeAreaView
 import { LinearGradient } from "expo-linear-gradient";
 import Animated, { FadeIn, FadeInDown } from "react-native-reanimated";
 
@@ -39,10 +46,11 @@ const styles = StyleSheet.create({
     padding: 20,
     paddingTop: Platform.select({
       web: 90,
-      default: Platform.OS === "ios" ? 80 : 90, // Adjusted for header height + padding
+      default: Platform.OS === "ios" ? 100 : 110, // Increased padding to avoid header overlap
     }),
     minHeight: "100%",
     alignItems: "center",
+    paddingBottom: Platform.select({ web: 20, default: 50 }), // Added bottom padding for mobile
   },
   section: {
     width: "100%",
@@ -52,7 +60,7 @@ const styles = StyleSheet.create({
   hero: {
     alignItems: "center",
     justifyContent: "center",
-    marginTop: Platform.select({ web: 60, default: 20 }),
+    marginTop: Platform.select({ web: 60, default: 30 }), // Adjusted for mobile
     marginBottom: 80,
   },
 });
@@ -65,7 +73,7 @@ export default function Homepage() {
     const { y } = event.nativeEvent.layout;
     setSectionRefs((prev) => ({
       ...prev,
-      [sectionId]: y,
+      [sectionId]: y - 80, // Subtract header height to account for fixed header
     }));
   };
 
@@ -87,7 +95,7 @@ export default function Homepage() {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Header scrollToSection={scrollToSection} />
       <Animated.View entering={FadeIn.duration(500)}></Animated.View>
       <LinearGradient
@@ -98,6 +106,8 @@ export default function Homepage() {
           ref={scrollViewRef}
           style={styles.scrollView}
           contentContainerStyle={styles.content}
+          showsVerticalScrollIndicator={Platform.OS === "web"} // Hide scrollbar on mobile
+          scrollEventThrottle={16} // Improve scroll performance
         >
           <Animated.View entering={FadeIn.delay(300)} style={styles.section}>
             <View style={styles.hero}>
@@ -147,6 +157,6 @@ export default function Homepage() {
           </Animated.View>
         </ScrollView>
       </LinearGradient>
-    </View>
+    </SafeAreaView>
   );
 }

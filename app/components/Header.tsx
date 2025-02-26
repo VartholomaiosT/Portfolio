@@ -15,50 +15,34 @@ const styles = StyleSheet.create({
     width: "100%",
     backgroundColor: "transparent",
     zIndex: 1000,
-    ...Platform.select({
-      web: {
-        position: "fixed" as "absolute",
-        top: 0,
-      },
-      default: {
-        position: "relative",
-        paddingTop: StatusBar.currentHeight || 0,
-      },
+    position: "fixed",
+    top: 0,
+    paddingTop: Platform.select({
+      web: 0,
+      default: StatusBar.currentHeight || 0,
     }),
   },
   header: {
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    paddingHorizontal: Platform.select({ web: 40, default: 16 }),
-    backgroundColor: Platform.select({
-      web: "rgba(26, 26, 26, 0.85)",
-      default: "rgba(26, 26, 26, 0.95)",
-    }),
-    ...Platform.select({
-      web: {
-        height: 70,
-        backdropFilter: "blur(8px)",
-        WebkitBackdropFilter: "blur(8px)",
-        borderBottomWidth: 1,
-        borderBottomColor: "rgba(255, 255, 255, 0.1)",
-      },
-      default: {
-        height: Platform.OS === "ios" ? 60 : 70, // Adjusted height for mobile
-        shadowColor: "#000",
-        shadowOffset: {
-          width: 0,
-          height: 2,
-        },
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5,
-      },
-    }),
+    paddingHorizontal: 16,
+    backgroundColor: "rgba(26, 26, 26, 0.95)",
+    height: 70,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: "100%",
   },
   nav: {
     flexDirection: "row",
-    gap: Platform.select({ web: 30, default: 4 }), // Reduced gap for mobile
+    flexWrap: "wrap",
+    gap: 8,
   },
   navItem: {
     flexDirection: "row",
@@ -66,28 +50,19 @@ const styles = StyleSheet.create({
     gap: 6,
     padding: 8,
     borderRadius: 8,
-    ...Platform.select({
-      web: {
-        cursor: "pointer",
-        transition: "all 0.2s ease-in-out",
-      },
-      default: {
-        backgroundColor: "rgba(255,255,255,0.05)",
-      },
-    }),
+    backgroundColor: "rgba(255,255,255,0.05)",
   },
   navItemCompact: {
-    padding: 6,
+    padding: 8,
+    minWidth: 36,
+    justifyContent: "center",
   },
-  navItemHover: Platform.select({
-    web: {
-      backgroundColor: "rgba(255,255,255,0.1)",
-    },
-    default: {},
-  }),
+  navItemHover: {
+    backgroundColor: "rgba(255,255,255,0.1)",
+  },
   navText: {
     color: "#ffffff",
-    fontSize: Platform.select({ web: 16, default: 12 }), // Reduced font size for mobile
+    fontSize: 12,
   },
   logo: {
     fontSize: 24,
@@ -109,7 +84,7 @@ export default function Header({ scrollToSection }: HeaderProps) {
   const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
 
   // Determine if we should show compact view
-  const isCompact = Platform.OS !== "web" && width < 380;
+  const isCompact = width < 360; // Apply compact view for small screens
 
   const handlePress = (sectionId: string) => {
     if (Platform.OS === "web") {
@@ -139,15 +114,11 @@ export default function Header({ scrollToSection }: HeaderProps) {
                 styles.navItem,
                 isCompact && styles.navItemCompact,
                 hoveredItem === item.id && styles.navItemHover,
-                pressed && Platform.OS !== "web" && { opacity: 0.7 },
+                pressed && { opacity: 0.7 },
               ]}
               onPress={() => handlePress(item.id)}
-              {...Platform.select({
-                web: {
-                  onMouseEnter: () => setHoveredItem(item.id),
-                  onMouseLeave: () => setHoveredItem(null),
-                },
-              })}
+              onMouseEnter={() => setHoveredItem(item.id)}
+              onMouseLeave={() => setHoveredItem(null)}
             >
               <item.Icon size={isCompact ? 14 : 16} color="#ffffff" />
               {!isCompact && (
