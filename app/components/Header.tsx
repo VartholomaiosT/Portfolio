@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     paddingHorizontal: 16,
-    backgroundColor: "rgba(26, 26, 26, 0.95)",
+    backgroundColor: "rgba(26, 26, 26,1)",
     height: 70,
     shadowColor: "#000",
     shadowOffset: {
@@ -52,17 +52,26 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: "rgba(255,255,255,0.05)",
   },
+  navItemWeb: {
+    paddingHorizontal: 16, // Larger padding for web
+    paddingVertical: 10, // Larger padding for web
+    cursor: "pointer", // Pointer cursor for web
+    transition: "all 0.2s ease-in-out", // Smooth transition for hover effect
+  },
   navItemCompact: {
     padding: 8,
     minWidth: 36,
     justifyContent: "center",
   },
   navItemHover: {
-    backgroundColor: "rgba(255,255,255,0.1)",
+    backgroundColor: "rgba(255,255,255,0.1)", // Hover effect for web
   },
   navText: {
     color: "#ffffff",
     fontSize: 12,
+  },
+  navTextWeb: {
+    fontSize: 16, // Larger font size for web
   },
   logo: {
     fontSize: 24,
@@ -85,6 +94,7 @@ export default function Header({ scrollToSection }: HeaderProps) {
 
   // Determine if we should show compact view
   const isCompact = width < 360; // Apply compact view for small screens
+  const isWeb = width >= 768; // Apply web-specific styles for larger screens
 
   const handlePress = (sectionId: string) => {
     if (Platform.OS === "web") {
@@ -113,6 +123,7 @@ export default function Header({ scrollToSection }: HeaderProps) {
               style={({ pressed }) => [
                 styles.navItem,
                 isCompact && styles.navItemCompact,
+                isWeb && styles.navItemWeb, // Apply web-specific styles
                 hoveredItem === item.id && styles.navItemHover,
                 pressed && { opacity: 0.7 },
               ]}
@@ -122,7 +133,9 @@ export default function Header({ scrollToSection }: HeaderProps) {
             >
               <item.Icon size={isCompact ? 14 : 16} color="#ffffff" />
               {!isCompact && (
-                <Animated.Text style={styles.navText}>
+                <Animated.Text
+                  style={[styles.navText, isWeb && styles.navTextWeb]}
+                >
                   {item.label}
                 </Animated.Text>
               )}
