@@ -97,6 +97,7 @@ export default function Homepage() {
   return (
     <SafeAreaView style={styles.container}>
       <Header scrollToSection={scrollToSection} />
+
       <Animated.View entering={FadeIn.duration(500)}></Animated.View>
       <LinearGradient
         colors={["#1a1a1a", "#2d2d2d", "#3d3d3d"]}

@@ -187,3 +187,5 @@ export const Icons = {
     </Svg>
   ),
 };
+
+export default Icons;

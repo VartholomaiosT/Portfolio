@@ -21,6 +21,10 @@ const styles = StyleSheet.create({
       web: 0,
       default: StatusBar.currentHeight || 0,
     }),
+    paddingRight: Platform.select({
+      web: 17,
+      default: 0,
+    }),
   },
   header: {
     flexDirection: "row",
@@ -56,7 +60,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16, // Larger padding for web
     paddingVertical: 10, // Larger padding for web
     cursor: "pointer", // Pointer cursor for web
-    transition: "all 0.2s ease-in-out", // Smooth transition for hover effect
+    ...Platform.select({
+      web: {
+        transition: "all 0.2s ease-in-out", // Smooth transition for hover effect
+      },
+    }),
   },
   navItemCompact: {
     padding: 8,
@@ -128,8 +136,10 @@ export default function Header({ scrollToSection }: HeaderProps) {
                 pressed && { opacity: 0.7 },
               ]}
               onPress={() => handlePress(item.id)}
-              onMouseEnter={() => setHoveredItem(item.id)}
-              onMouseLeave={() => setHoveredItem(null)}
+              {...(isWeb && {
+                onMouseEnter: () => setHoveredItem(item.id),
+                onMouseLeave: () => setHoveredItem(null),
+              })}
             >
               <item.Icon size={isCompact ? 14 : 16} color="#ffffff" />
               {!isCompact && (
