@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Platform } from "react-native";
+import { View, StyleSheet, Platform, Linking } from "react-native";
 import Animated, { FadeInDown } from "react-native-reanimated";
 
 interface SkillsProps {
@@ -67,6 +67,11 @@ const styles = StyleSheet.create({
     fontSize: 14,
     textAlign: "center",
   },
+  certTextWithLink: {
+    color: "#4dabf7",
+    fontSize: 14,
+    textAlign: "center",
+  },
   languageContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
@@ -82,6 +87,19 @@ const styles = StyleSheet.create({
 });
 
 export default function Skills({ skills, delay = 1100 }: SkillsProps) {
+  const openCertificateLink = (cert: string) => {
+    // Extract URL from certification string (if exists)
+    const urlMatch = cert.match(/\(([^)]+)\)$/);
+    if (urlMatch && urlMatch[1]) {
+      Linking.openURL(urlMatch[1]);
+    }
+  };
+
+  const formatCertification = (cert: string) => {
+    // Remove URL from display text
+    return cert.replace(/\s*\(https?:\/\/[^)]+\)$/, "");
+  };
+
   return (
     <Animated.View
       entering={FadeInDown.delay(delay)}
@@ -143,15 +161,23 @@ export default function Skills({ skills, delay = 1100 }: SkillsProps) {
         <Animated.Text style={styles.sectionTitle}>
           Certifications
         </Animated.Text>
-        {skills.certifications.map((cert, index) => (
-          <Animated.View
-            key={cert}
-            entering={FadeInDown.delay(delay + index * 50)}
-            style={styles.certContainer}
-          >
-            <Animated.Text style={styles.certText}>{cert}</Animated.Text>
-          </Animated.View>
-        ))}
+        {skills.certifications.map((cert, index) => {
+          const hasLink = cert.includes("(http");
+          return (
+            <Animated.View
+              key={cert}
+              entering={FadeInDown.delay(delay + index * 50)}
+              style={styles.certContainer}
+            >
+              <Animated.Text
+                style={hasLink ? styles.certTextWithLink : styles.certText}
+                onPress={hasLink ? () => openCertificateLink(cert) : undefined}
+              >
+                {formatCertification(cert)}
+              </Animated.Text>
+            </Animated.View>
+          );
+        })}
       </View>
 
       <View style={styles.section}>

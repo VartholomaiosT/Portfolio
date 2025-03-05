@@ -27,14 +27,7 @@ import {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    ...Platform.select({
-      web: {
-        display: "flex",
-      },
-      default: {
-        backgroundColor: "#1a1a1a",
-      },
-    }),
+    backgroundColor: "#1a1a1a",
   },
   gradient: {
     flex: 1,
@@ -43,12 +36,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   content: {
+    flexGrow: 1, // Ensure content fills the available space
     padding: 20,
     paddingTop: Platform.select({
       web: 90,
       default: Platform.OS === "ios" ? 100 : 110, // Increased padding to avoid header overlap
     }),
-    minHeight: "100%",
     alignItems: "center",
     paddingBottom: Platform.select({ web: 20, default: 50 }), // Added bottom padding for mobile
   },

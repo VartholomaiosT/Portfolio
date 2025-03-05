@@ -83,6 +83,7 @@ export const SKILLS = {
     "Google: Digital Advertising (Search, Display & Social)",
     "Google: Creating an Online Business",
     "Google: Digital Marketing Strategy",
+    "University of Helsinki: Full Stack Open 2025 (https://studies.cs.helsinki.fi/stats/api/certificate/fullstackopen/en/42c6f9e7a52cb8120a8e85bb2ca8d7a0)",
   ],
   languages: [
     { name: "English", level: "B2 TOEIC & ESB" },
